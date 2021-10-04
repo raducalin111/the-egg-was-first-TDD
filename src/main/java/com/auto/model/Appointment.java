@@ -1,12 +1,20 @@
 package com.auto.model;
 
 
+import com.auto.transactions.impl.CreateAppointmentTransaction;
+
 import java.time.LocalDateTime;
 
 public class Appointment {
     private String name;
     private LocalDateTime time;
     private String carBrand;
+
+    public Appointment(CreateAppointmentTransaction transaction) {
+        this.name = transaction.getName();
+        this.time = transaction.getTime();
+        this.carBrand = transaction.getCarBrand();
+    }
 
     public String getName() {
         return name;

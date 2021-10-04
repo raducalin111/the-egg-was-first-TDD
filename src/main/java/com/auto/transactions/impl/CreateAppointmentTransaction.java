@@ -1,6 +1,7 @@
 package com.auto.transactions.impl;
 
 import com.auto.dao.AppointmentDao;
+import com.auto.model.Appointment;
 import com.auto.transactions.Transaction;
 
 import java.time.LocalDateTime;
@@ -16,12 +17,24 @@ public class CreateAppointmentTransaction implements Transaction {
 
     @Override
     public boolean validate() {
-        return false;
+        if (carBrand == null) {
+            return false;
+        }
+
+        if (LocalDateTime.now().isAfter(time)) {
+            return false;
+        }
+
+        return true;
     }
 
     @Override
     public void execute() {
+        if(!validate()) {
+            throw new IllegalStateException("The appointment is not valid!");
+        }
 
+        appointmentDao.add(new Appointment(this));
     }
 
     public String getName() {
@@ -46,10 +59,6 @@ public class CreateAppointmentTransaction implements Transaction {
 
     public void setCarBrand(String carBrand) {
         this.carBrand = carBrand;
-    }
-
-    public AppointmentDao getAppointmentDao() {
-        return appointmentDao;
     }
 
     public void setAppointmentDao(AppointmentDao appointmentDao) {
