@@ -14,13 +14,13 @@ import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CreateAppointmentTransactionTest {
+public class CreateAppointmentTest {
 
     @Mock
     AppointmentDao appointmentDao;
 
     @InjectMocks
-    CreateAppointmentTransaction transaction;
+    CreateAppointment transaction;
 
     @Test
     public void executeValidCreatesAppointment() {
@@ -30,7 +30,7 @@ public class CreateAppointmentTransactionTest {
 
         transaction.execute();
 
-        verify(appointmentDao).add(any());
+        verify(appointmentDao).create(any());
     }
 
     @Test

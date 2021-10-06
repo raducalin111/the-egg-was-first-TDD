@@ -6,7 +6,7 @@ import com.auto.transactions.Transaction;
 
 import java.time.LocalDateTime;
 
-public class CreateAppointmentTransaction implements Transaction {
+public class CreateAppointment implements Transaction {
 
     private String name;
     private LocalDateTime time;
@@ -34,7 +34,7 @@ public class CreateAppointmentTransaction implements Transaction {
             throw new IllegalStateException("The appointment is not valid!");
         }
 
-        appointmentDao.add(new Appointment(this));
+        appointmentDao.create(new Appointment(this));
     }
 
     public String getName() {

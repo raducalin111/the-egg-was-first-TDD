@@ -1,7 +1,7 @@
 package com.auto.model;
 
 
-import com.auto.transactions.impl.CreateAppointmentTransaction;
+import com.auto.transactions.impl.CreateAppointment;
 
 import java.time.LocalDateTime;
 
@@ -10,7 +10,7 @@ public class Appointment {
     private LocalDateTime time;
     private String carBrand;
 
-    public Appointment(CreateAppointmentTransaction transaction) {
+    public Appointment(CreateAppointment transaction) {
         this.name = transaction.getName();
         this.time = transaction.getTime();
         this.carBrand = transaction.getCarBrand();

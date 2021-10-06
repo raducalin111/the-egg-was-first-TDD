@@ -4,6 +4,6 @@ import com.auto.model.Appointment;
 
 public interface AppointmentDao {
 
-    void add(Appointment appointment);
+    void create(Appointment appointment);
 
 }
